@@ -157,10 +157,8 @@ impl Analyzer {
             }
         }
 
-        Ok(workspaces
-            .entry(workspace_root.to_path_buf())
-            .or_insert(analyzer)
-            .clone())
+        workspaces.insert(workspace_root.to_path_buf(), analyzer.clone());
+        Ok(analyzer)
     }
 }
 
